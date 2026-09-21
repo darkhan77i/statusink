@@ -3,41 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#20152c">
+  <meta name="theme-color" content="#f6d77c">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>Официальный вердикт</title>
+  <title>Проверка статуса</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2320152c'/%3E%3Cpath d='M32 12 38 26l14 2-10 10 3 14-13-7-13 7 3-14-10-10 14-2z' fill='%23ffb6d9'/%3E%3C/svg%3E">
   <style>
-    :root { color-scheme: dark; font-family: Inter, ui-rounded, system-ui, sans-serif; }
+    :root { color-scheme: light; font-family: "Trebuchet MS", ui-rounded, system-ui, sans-serif; }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100dvh; overflow: hidden; background: #20152c; color: #fff7fc; }
-    .app { min-height: 100dvh; display: grid; place-items: center; padding: max(28px, env(safe-area-inset-top)) 22px max(28px, env(safe-area-inset-bottom)); background: radial-gradient(circle at 18% 12%, #5d306d 0, transparent 30%), radial-gradient(circle at 88% 88%, #b44578 0, transparent 33%), #20152c; }
-    .orb { position: fixed; width: 280px; height: 280px; border-radius: 50%; background: #ff8ec2; filter: blur(75px); opacity: .17; animation: drift 8s ease-in-out infinite alternate; }
+    body { margin: 0; min-height: 100dvh; overflow: hidden; background: #f6d77c; color: #5d3823; }
+    .app { min-height: 100dvh; display: grid; place-items: center; padding: max(28px, env(safe-area-inset-top)) 22px max(28px, env(safe-area-inset-bottom)); background: linear-gradient(90deg, #f0c55d88 50%, transparent 50%) 0 0 / 74px 74px, linear-gradient(#fff8df88 50%, transparent 50%) 0 0 / 74px 74px, #f7db81; }
+    .orb { position: fixed; width: 250px; height: 250px; border-radius: 50%; background: #fff5c9; filter: blur(65px); opacity: .45; animation: drift 8s ease-in-out infinite alternate; }
     .orb.one { top: -130px; right: -100px; } .orb.two { bottom: -140px; left: -90px; animation-delay: -3s; }
-    .card { position: relative; width: min(100%, 410px); padding: 35px 26px 27px; border: 1px solid #ffffff22; border-radius: 32px; background: #261a33cc; box-shadow: 0 24px 70px #07030dbb; backdrop-filter: blur(16px); text-align: center; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 13px; border: 1px solid #ffffff20; border-radius: 100px; color: #f7c8df; font-size: 13px; letter-spacing: .05em; text-transform: uppercase; }
-    h1 { margin: 26px 0 12px; font-size: clamp(30px, 9vw, 42px); line-height: 1.04; letter-spacing: -.05em; }
-    p { margin: 0 auto 27px; max-width: 280px; color: #dfc8da; line-height: 1.55; font-size: 16px; }
-    .button { width: 100%; min-height: 58px; border: 0; border-radius: 18px; background: linear-gradient(135deg, #ff9ac8, #bc6ed6); color: #271525; font: inherit; font-size: 17px; font-weight: 800; box-shadow: 0 12px 25px #e1609c40; cursor: pointer; transition: transform .18s ease, filter .18s ease; }
-    .button:active { transform: scale(.97); filter: brightness(.92); }
-    .hint { margin-top: 16px; margin-bottom: 0; color: #bca4b6; font-size: 12px; }
-    .scan { display: none; position: absolute; inset: 0; z-index: 3; place-items: center; border-radius: 32px; background: #1b1028f2; }
+    .card { position: relative; width: min(100%, 390px); padding: 29px 25px 25px; border: 2px solid #f7ead1; border-radius: 27px; background: #fff9eb; box-shadow: 0 18px 0 #b9804d33, 0 24px 55px #7c4f2144; text-align: center; transform: rotate(-1.1deg); }
+    .mascot { width: 96px; height: 92px; position: relative; margin: -7px auto 8px; filter: drop-shadow(0 6px 0 #bd7d4522); }
+    .mascot::before { content: ''; position: absolute; inset: 13px 12px 4px; border: 4px solid #5f3926; border-radius: 44% 44% 35% 35%; background: #f7d96f; }
+    .mascot::after { content: '• ᴗ •'; position: absolute; inset: 35px 0 auto; color: #5f3926; font-family: ui-monospace, monospace; font-size: 18px; font-weight: 900; }
+    .hat { position: absolute; z-index: 1; top: 4px; left: 31px; width: 36px; height: 19px; border: 4px solid #5f3926; border-radius: 50% 50% 42% 42%; background: #875139; transform: rotate(-7deg); }
+    .badge { display: inline-flex; align-items: center; gap: 7px; padding: 7px 12px; border: 1px solid #d8a35a; border-radius: 100px; color: #9b6231; background: #fff1bd; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 15px 0 11px; color: #6b3d27; font-size: clamp(30px, 9vw, 41px); line-height: 1.03; letter-spacing: -.05em; }
+    p { margin: 0 auto 24px; max-width: 290px; color: #986a4a; line-height: 1.48; font-size: 15px; }
+    .button { width: 100%; min-height: 55px; border: 0; border-radius: 17px; background: #db8a2f; color: #fff9e8; font: inherit; font-size: 17px; font-weight: 800; box-shadow: inset 0 -4px 0 #a95e24, 0 8px 0 #d8aa6129; cursor: pointer; transition: transform .18s ease, filter .18s ease; }
+    .button:active { transform: translateY(3px) scale(.98); box-shadow: inset 0 -1px 0 #a95e24; filter: brightness(.96); }
+    .hint { margin-top: 15px; margin-bottom: 0; color: #b48b6b; font-size: 12px; }
+    .scan { display: none; position: absolute; inset: 0; z-index: 3; place-items: center; border-radius: 25px; background: #fff8eaf2; }
     .scan.active { display: grid; }
-    .scan-box { width: 150px; height: 150px; border: 2px solid #ff9ac8; border-radius: 24px; box-shadow: 0 0 35px #ff8fc277; overflow: hidden; }
-    .line { width: 100%; height: 5px; background: #fff4fa; box-shadow: 0 0 20px #fff; animation: scan 1.3s ease-in-out infinite alternate; }
-    .scan span { position: absolute; margin-top: 214px; color: #f4c5dc; font-weight: 700; }
-    .modal { display: none; position: fixed; inset: 0; z-index: 5; place-items: center; padding: 24px; background: #11091dcc; backdrop-filter: blur(10px); }
+    .scan-box { width: 126px; height: 126px; border: 3px solid #d98a36; border-radius: 28px; box-shadow: 0 0 0 9px #ffe7a3; overflow: hidden; background: #fff3c8; }
+    .line { width: 100%; height: 5px; background: #d98a36; box-shadow: 0 0 15px #d98a36; animation: scan 1.3s ease-in-out infinite alternate; }
+    .scan span { position: absolute; margin-top: 190px; color: #9a643b; font-weight: 700; }
+    .modal { display: none; position: fixed; inset: 0; z-index: 5; place-items: center; padding: 24px; background: #6c43196b; backdrop-filter: blur(6px); }
     .modal.active { display: grid; animation: fade .24s ease both; }
-    .verdict { width: min(100%, 400px); padding: 36px 24px 25px; border: 1px solid #ffffff32; border-radius: 32px; background: linear-gradient(145deg, #392042, #1d152b); box-shadow: 0 26px 80px #000b; text-align: center; }
-    .seal { width: 86px; height: 86px; display: grid; place-items: center; margin: 0 auto 19px; border-radius: 50%; background: #ffafd1; color: #42203b; font-size: 43px; box-shadow: 0 0 0 10px #ffafd124, 0 0 0 20px #ffafd10e; }
-    .verdict small { color: #d5adc6; letter-spacing: .13em; text-transform: uppercase; }
-    .verdict h2 { margin: 13px 0 22px; font-size: clamp(32px, 10vw, 44px); letter-spacing: -.05em; line-height: 1; }
-    .secondary { width: 100%; min-height: 51px; border: 1px solid #ffffff28; border-radius: 16px; background: #ffffff10; color: #fff7fc; font: inherit; font-weight: 700; cursor: pointer; }
+    .verdict { position: relative; width: min(100%, 385px); padding: 34px 24px 25px; border: 3px solid #f5e2bd; border-radius: 27px; background: #fff8e8; box-shadow: 0 24px 65px #5a341c66; text-align: center; overflow: hidden; }
+    .seal { width: 80px; height: 80px; display: grid; place-items: center; margin: 0 auto 18px; border: 3px dashed #9f5d2f; border-radius: 50%; background: #f4c85f; color: #71442b; font-size: 34px; box-shadow: 0 0 0 7px #fff0c7; transform: rotate(-9deg); }
+    .verdict small { color: #a5663b; letter-spacing: .12em; text-transform: uppercase; font-weight: 800; }
+    .verdict h2 { margin: 13px 0 22px; color: #683c26; font-size: clamp(32px, 10vw, 43px); letter-spacing: -.05em; line-height: 1; }
+    .secondary { width: 100%; min-height: 51px; border: 2px solid #d69a55; border-radius: 16px; background: #fff0bf; color: #8a532f; font: inherit; font-weight: 800; cursor: pointer; }
+    .confetti { pointer-events: none; position: absolute; inset: 0; overflow: hidden; }
+    .confetti i { position: absolute; top: -18px; width: 11px; height: 16px; border-radius: 4px; background: #f1bf43; box-shadow: 0 1px 0 #a96b2e; animation: candy 1.9s cubic-bezier(.16,.8,.35,1) both; }
+    .confetti i:nth-child(1) { left: 8%; animation-delay: .03s; transform: rotate(15deg); } .confetti i:nth-child(2) { left: 19%; animation-delay: .22s; } .confetti i:nth-child(3) { left: 34%; animation-delay: .11s; transform: rotate(28deg); } .confetti i:nth-child(4) { left: 51%; animation-delay: .32s; } .confetti i:nth-child(5) { left: 68%; animation-delay: .16s; transform: rotate(-21deg); } .confetti i:nth-child(6) { left: 83%; animation-delay: .28s; }
     @keyframes scan { from { transform: translateY(0); } to { transform: translateY(142px); } }
     @keyframes drift { to { transform: translate(28px, 34px) scale(1.12); } }
-    @keyframes fade { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: scale(1); } }
+    @keyframes fade { from { opacity: 0; transform: scale(.93) rotate(-1deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+    @keyframes candy { from { translate: 0 -15px; opacity: 0; } 15% { opacity: 1; } to { translate: 48px 430px; rotate: 310deg; opacity: 0; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; } }
   </style>
 </head>
@@ -45,6 +53,7 @@
   <main class="app">
     <div class="orb one"></div><div class="orb two"></div>
     <section class="card" aria-labelledby="title">
+      <div class="mascot" aria-hidden="true"><div class="hat"></div></div>
       <div class="badge">✦ секретная проверка</div>
       <h1 id="title">Узнай свой<br>официальный статус</h1>
       <p>Система проанализирует твою харизму, вайб и уровень легендарности.</p>
@@ -55,6 +64,7 @@
   </main>
   <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="result">
     <div class="verdict">
+      <div class="confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="seal">✦</div>
       <small>Официальный вердикт</small>
       <h2 id="result">Ты официально<br>Лохушка 🤭</h2>
